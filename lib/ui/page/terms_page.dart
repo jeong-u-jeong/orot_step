@@ -150,7 +150,10 @@ class _TermsPageState extends State<TermsPage> {
                 )
               ],
             ),
-            wideBtn(onTap: () {}, txt: '확인')
+            GestureDetector(
+              onTap: () {},
+              child: wideBtn(txt: '확인', color: GlobalStyle.gray_off, bottom: 48,),
+            )
           ],
         ),
       ),
@@ -219,38 +222,4 @@ class _CheckBoxState extends State<CheckBox> {
   }
 }
 
-class wideBtn extends StatelessWidget {
-  final GestureTapCallback onTap;
-  final String txt;
 
-  wideBtn({
-    required this.onTap,
-    required this.txt,
-});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        margin: EdgeInsets.fromLTRB(20, 0, 20, 48),
-        width: double.infinity,
-        height: 48,
-        decoration: BoxDecoration(
-          color: GlobalStyle.gray_off,
-          borderRadius: BorderRadius.circular(24),
-        ),
-        child: Center(
-          child: Text(
-            txt,
-            style: TextStyle(
-              color: GlobalStyle.white,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}

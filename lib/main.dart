@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:join_page/ui/page/step2_page.dart';
+import 'package:join_page/ui/page/terms_page.dart';
 
 void main() {
   runApp(const MyApp());

@@ -11,45 +11,6 @@ class TermsPage extends StatefulWidget {
 }
 
 class _TermsPageState extends State<TermsPage> {
-  List checkListTerms = [ ///// 리스트뷰로 출력????????????
-    {
-      'id': 0,
-      'value': false,
-      'type': 'essential',
-      'title': '[필수] 서비스 이용약관 동의',
-    },
-    {
-      'id': 1,
-      'value': false,
-      'type': 'essential',
-      'title': '[필수] 개인정보 수집 및 이용약관 동의'
-    },
-    {
-      'id': 2,
-      'value': false,
-      'type': 'essential',
-      'title': '[필수] 보안 및 데이터 활용 동의'
-    },
-    {
-      'id': 3,
-      'value': false,
-      'type': 'essential',
-      'title': '[필수] 개인정보 수집 및 이용약관 동의'
-    },
-    {
-      'id': 4,
-      'value': false,
-      'type': 'choice',
-      'title': '[선택] 위치기반 서비스 이용약관 동의'
-    },
-    {
-      'id': 5,
-      'value': false,
-      'type': 'choice',
-      'title': '[선택] 마케팅 정보 수신 및 활용 동의'
-    },
-
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -175,8 +136,9 @@ class CheckBox extends StatefulWidget {
 }
 
 class _CheckBoxState extends State<CheckBox> {
+  bool essential = false;
+  bool choice = false;
   bool checked = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -223,3 +185,42 @@ class _CheckBoxState extends State<CheckBox> {
 }
 
 
+List checkListTerms = [
+  {
+    'id': 0,
+    'value': false,
+    'type': 'essential',
+    'title': '[필수] 서비스 이용약관 동의',
+  },
+  {
+    'id': 1,
+    'value': false,
+    'type': 'essential',
+    'title': '[필수] 개인정보 수집 및 이용약관 동의'
+  },
+  {
+    'id': 2,
+    'value': false,
+    'type': 'essential',
+    'title': '[필수] 보안 및 데이터 활용 동의'
+  },
+  {
+    'id': 3,
+    'value': false,
+    'type': 'essential',
+    'title': '[필수] 개인정보 수집 및 이용약관 동의'
+  },
+  {
+    'id': 4,
+    'value': false,
+    'type': 'choice',
+    'title': '[선택] 위치기반 서비스 이용약관 동의'
+  },
+  {
+    'id': 5,
+    'value': false,
+    'type': 'choice',
+    'title': '[선택] 마케팅 정보 수신 및 활용 동의'
+  },
+
+];

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:join_page/global_asset/global_style.dart';
+import 'package:join_page/ui/page/step3_page.dart';
 
 class Step2Page extends StatefulWidget {
   @override
@@ -9,13 +10,8 @@ class Step2Page extends StatefulWidget {
 }
 
 class _Step2PageState extends State<Step2Page> {
-  final List<int> steps = [1, 2, 3, 4, 5, 6];
-
-  String? _gruopValue;
-
-  ValueChanged<String?> _valueChangedHandler() {
-    return (value) => setState(()=> _gruopValue = value!);
-  }
+  bool primiparity = false;
+  bool multiparous = false;
 
   @override
   Widget build(BuildContext context) {
@@ -91,21 +87,35 @@ class _Step2PageState extends State<Step2Page> {
                 ),
                 Column(
                   children: [
-                    // MyRadioOption(
-                    //     value: 'A',
-                    //     groupValue: _gruopValue,
-                    //     label: 'A',
-                    //     onChanged: _valueChangedHandler(),
-                    // )
-                    wideBtn(
-                      txt: '초산이에요',
-                      color: GlobalStyle.purple_off,
-                      bottom: 8,
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (primiparity == false) {
+                            primiparity = true;
+                            multiparous = false;
+                          }
+                        });
+                      },
+                      child: wideBtn(
+                        txt: '초산이에요',
+                        color: (primiparity == true) ? GlobalStyle.purple_on : GlobalStyle.purple_off,
+                        bottom: 8,
+                      ),
                     ),
-                    wideBtn(
-                      txt: '경산이에요',
-                      color: GlobalStyle.purple_off,
-                      bottom: 0,
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (multiparous == false) {
+                            multiparous = true;
+                            primiparity = false;
+                          }
+                        });
+                      },
+                      child: wideBtn(
+                        txt: '경산이에요',
+                        color: (multiparous == true) ? GlobalStyle.purple_on : GlobalStyle.purple_off,
+                        bottom: 0,
+                      ),
                     ),
 
                   ],
@@ -113,52 +123,19 @@ class _Step2PageState extends State<Step2Page> {
               ],
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                if (primiparity || multiparous)
+                Navigator.push(
+                    context, 
+                    MaterialPageRoute(builder: (context) => Step3Page()),
+                );
+              },
               child:
-                  wideBtn(txt: '다음', color: GlobalStyle.gray_off, bottom: 48),
+                  wideBtn(txt: '다음', color: (primiparity || multiparous) ? GlobalStyle.purple_on : GlobalStyle.gray_off, bottom: 48),
             )
           ],
         ));
   }
 }
-//
-// class MyRadioOption<T> extends StatelessWidget {
-//
-//   late final T value;
-//   late final T? groupValue;
-//   late final String label;
-//   late final ValueChanged<T?> onChanged;
-//
-//   MyRadioOption({
-//     required this.value,
-//     required this.groupValue,
-//     required this.label,
-//     required this.onChanged,
-// });
-//
-//   Widget _buildLabel() {
-//     final bool isSelected = value == groupValue;
-//
-//     return wideBtn(
-//         txt: value.toString(),
-//         color: isSelected ? GlobalStyle.purple_on : GlobalStyle.purple_off,
-//         bottom: 0
-//     );
-//   }
-//
-//
-//   @override
-//   Widget build(BuildContext context) {
-//
-//     return Container(
-//       child: InkWell(
-//         onTap: () => onChanged(value),
-//         child: Row(
-//           children: [
-//             _buildLabel(),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+
+

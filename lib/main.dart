@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:join_page/global_asset/global_style.dart';
 import 'package:join_page/ui/page/step2_page.dart';
+import 'package:join_page/ui/page/step3_page.dart';
 import 'package:join_page/ui/page/terms_page.dart';
 
 void main() {
